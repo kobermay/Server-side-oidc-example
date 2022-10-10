@@ -1,0 +1,54 @@
+version: '3.7'
+
+services:
+
+  postgres:
+      image: postgres:14.2-alpine
+      container_name: postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      environment:
+        POSTGRES_USER: keycloak
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: keycloak
+      restart: unless-stopped
+      networks:
+        - ssoInstruction_network
+
+  keycloak:
+      image: quay.io/keycloak/keycloak:legacy
+      container_name: keycloak
+      restart: always
+      volumes:
+        - ../keycloak:/opt/jboss/keycloak/imports
+      environment:
+        KEYCLOAK_IMPORT: /opt/jboss/keycloak/imports/realm-export.json -Dkeycloak.profile.feature.upload_scripts=enabled      
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_SCHEMA: public
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: Pa55w0rd
+        # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+        #JDBC_PARAMS: "ssl=true"
+      ports:
+        - 8080:8080
+      depends_on:
+        - postgres
+      networks:
+        - ssoInstruction_network
+
+  redis:
+    image: "redis:alpine"
+    ports:
+        - "6379:6379"
+
+volumes:
+  postgres_data:
+      driver: local
+
+networks:
+  ssoInstruction_network:
+    driver: bridge      
