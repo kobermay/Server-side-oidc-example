@@ -21,9 +21,9 @@ Bei dieser Applikation handelt es sich um ein Implementierungsbeispiel für eine
 1. Code klonen oder herunterladen
 2. Docker starten
 3. Mit einem Terminal in den Ordner Server-side-oidc-example navigieren und den Befehl `docker-compose up` ausführen.
-4. Mit dem Terminal in den Ordner backend navigieren und den Befehl `npm run start` ausführen.
-5. Mit dem Terminal in den Ordner frontend navigieren und den Befehl `npm run start` ausführen. Bei der Frage ob der Port auf einem anderen Port freigesetzt werden soll mit Ja bestätigen.
+4. Mit dem Terminal in den Ordner backend navigieren und die Befehle `npm i` und `npm run start` ausführen.
+5. Mit dem Terminal in den Ordner frontend navigieren und den Befehl `npm i` und `npm run start` ausführen. Bei der Frage ob der Port auf einem anderen Port freigesetzt werden soll mit Ja bestätigen.
 6. Auf http://localhost:8080/auth navigieren und auf die Administration Console klicken.
 7. Mit dem Nutzer "admin" und dem Passwort "Pa55w0rd" anmelden.
-8. Unter dem Reiter Users einen User erstellen mit einem Passwort
-9. Auf http://localhost:3001 navigieren und sich mit dem erstellten User und dem Passwort anmelden
+8. Unter dem Reiter Users einen User mit einem Passwort erstellen.
+9. Auf http://localhost:3001 navigieren und sich mit dem erstellten User und dem Passwort anmelden.
