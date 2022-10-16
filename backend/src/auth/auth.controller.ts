@@ -12,7 +12,10 @@ export class AuthController {
 
     @Get('/user')
     user(@Request() req) {
-        return req.user;
+        if(req.user){
+        console.log(req.user);
+        return req.user.userinfo;
+        }
     }
 
     @UseGuards(LoginGuard)

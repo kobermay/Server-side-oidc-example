@@ -7,7 +7,6 @@ import { User } from './dto/user.dto';
 function App() {
 
   const [ user, setUser ] = useState<User>();
-  const [ test, setTest ] = useState();
 
   useEffect(() => {
     if(!user){
@@ -15,22 +14,20 @@ function App() {
           setUser(res.data);
         }) 
       }
-      if(!test && user){
+      if(user){
         axios.get('http://localhost:3000/auth/test', { withCredentials: true}).then((res: AxiosResponse) => {
-          setTest(res.data);
-          console.log(test);
+          console.log(res.data);
         })
       }
-  }, [])
+  }, [user]) 
 
   const login = () => {window.location.replace('auth/login')}
   const logout = () => {window.location.replace('auth/logout')}
 
-
   return (
     <div >
-      {user && user.userinfo && 
-      <p className="username"> Hey {user.userinfo.name}</p>}
+      {user &&
+      <><p className="username"> Hey {user.preferred_username}</p><p className="sub"> sub: {user.sub}</p></> }
       <p className="buttons">
           {!user ? 
           <button color="primary" onClick={login}>Login</button>

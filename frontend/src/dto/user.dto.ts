@@ -1,8 +1,5 @@
-import { UserInfo } from "./userinfo.dto";
-
 export interface User {
-    id_token?: string,
-    access_token?: string,
-    refresh_token?: string,
-    userinfo?: UserInfo
+    sub: string;
+    email_verified: boolean;
+    preferred_username: string;
   }

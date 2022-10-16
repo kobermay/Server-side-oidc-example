@@ -6,7 +6,7 @@ export const buildOpenIdClient = async () => {
     const TrustIssuer = await Issuer.discover('http://localhost:8080/auth/realms/sso-instructions-test/.well-known/openid-configuration');
     const client = new TrustIssuer.Client({
         client_id: 'sso-instructions-test',
-        client_secret: '4LZbZljgL3KwDPU5Zy6b98G8B5YWwxQ4',
+        client_secret: 'KFcQhgoXJFnO9Y9V8G6jQ6hrlXWVjjAe',
         redirect_uris: ['http://localhost:3001/auth/callback'],
         post_logout_redirect_uris: ['http://localhost:3001/auth/logout'],
         response_types: ['code']
