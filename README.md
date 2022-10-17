@@ -1,13 +1,12 @@
 # Server-side-oidc-example
-Bei dieser Applikation handelt es sich um ein Implementierungsbeispiel für eine serverseitige Umsetzung von OIDC, mittels der NPM-Bibliothek openid-client. Es besteht die Möglichkeit sich per login Button bei Keycloak anzumelden und sich auch wieder abzumelden. Beim Login wird im Backend ein Session Cookie mit dem Attribut Http-only erstellt. Dieses muss immer an das Backend gesendet werden um auf geschützte Routen Zugriff zu haben. Eine der geschützten Routen ist http://localhost:3000/auth/test . Diese Route wird automatisch aufgerufen, wenn der Nutzer angemeldet ist. Die dazugehörige Antwort wird in den Browserlogs ausgegeben. Wird die Route ohne einem gültigen Session Cookie aufgerufen wird eine 403 Forbidden Fehlermeldung ausgegeben. Um die Tokens im Backend zeigen zu können, werden beim Aufruf der Route /auth/user die Tokens im Backend geloggt.
+Bei dieser Applikation handelt es sich um ein Implementierungsbeispiel für eine serverseitige Umsetzung von OIDC, mittels der NPM-Bibliothek openid-client. Es besteht die Möglichkeit sich per login Button bei Keycloak anzumelden und sich auch wieder abzumelden. Beim Login wird im Backend ein Session Cookie mit dem Attribut Http-only erstellt. Dieses muss immer an das Backend gesendet werden, um auf geschützte Routen Zugriff zu haben. Eine der geschützten Routen ist http://localhost:3000/auth/test. Diese Route wird automatisch aufgerufen, wenn der Nutzer angemeldet ist. Die dazugehörige Antwort wird in den Browserlogs ausgegeben. Wird die Route ohne einem gültigen Session Cookie aufgerufen wird eine 403 Forbidden Fehlermeldung ausgegeben. Um die Tokens im Backend zeigen zu können, werden beim Aufruf der Route /auth/user die Tokens im Backend geloggt.
 
 ## Technologien
 ### Frontend
 - React mit TypeScript
 
 ### Backend
-- NestJs
-- Postgres
+- NestJS
 - Redis (Wird verwendet um die Session ID des Session Cookies abzuspeichern)
 
 ### Infrastruktur
@@ -16,6 +15,7 @@ Bei dieser Applikation handelt es sich um ein Implementierungsbeispiel für eine
 
 ### Identity Provider
 - Keycloak
+- Datenbank für Keycloak ist PostgreSQL
 
 ### Verwendete NPM-Bibliotheken:
 - redis
@@ -23,6 +23,7 @@ Bei dieser Applikation handelt es sich um ein Implementierungsbeispiel für eine
 - express-session
 - openid-client
 - @nestjs/passport
+- helmet
 
 ### Applikation starten
 1. Code klonen oder herunterladen
