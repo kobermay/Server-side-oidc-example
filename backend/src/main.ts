@@ -4,6 +4,7 @@ import * as session from 'express-session';
 import * as passport from 'passport';
 import * as redis from 'redis';
 import * as connectRedis from 'connect-redis';
+import helmet from 'helmet';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -33,6 +34,7 @@ async function bootstrap() {
   }));
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(helmet());
   await app.listen(3000);
 }
 bootstrap();
